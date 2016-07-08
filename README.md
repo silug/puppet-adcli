@@ -1,6 +1,5 @@
-# adcli
+# puppet-adcli
 
-[![Project Home](https://www.freedesktop.org/software/realmd/adcli/adcli.html)
 [![Build Status](https://travis-ci.org/acjohnson/puppet-adcli.svg)](https://travis-ci.org/acjohnson/puppet-adcli)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/acjohnson/adcli.svg)](https://forge.puppetlabs.com/acjohnson/adcli)
 [![Puppet Forge Downloads](https://img.shields.io/puppetforge/dt/acjohnson/adcli.svg)](https://forge.puppetlabs.com/acjohnson/adcli)
@@ -16,7 +15,7 @@
 
 ## Overview
 
-This module will install the adcli package and Join Active Directory using adcli.
+This module will install the [adcli][0] package and Join Active Directory using adcli.
 
 ## Usage
 
@@ -60,3 +59,10 @@ Default: undef
 
 Tested on:
 * RHEL & CentOS 6,7
+
+## Credits
+
+* This Puppet module and TravisCI layout is based on [sgnl05-sssd][1] by Gjermund Jensvoll
+
+[0]: https://www.freedesktop.org/software/realmd/adcli/adcli.html
+[1]: https://github.com/sgnl05/sgnl05-sssd
