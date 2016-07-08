@@ -60,4 +60,3 @@ Default: undef
 
 Tested on:
 * RHEL & CentOS 6,7
-
