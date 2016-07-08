@@ -1,6 +1,5 @@
 require 'spec_helper'
 describe 'adcli' do
-
   describe 'on RedHat 6.7' do
     let(:facts) do
       {
@@ -26,7 +25,6 @@ describe 'adcli' do
       it { is_expected.to contain_package('adcli').with_ensure('present') }
       it { is_expected.to contain_exec('adcli_join') }
     end
-
   end
 
   describe 'on RedHat 7.2' do
@@ -54,7 +52,5 @@ describe 'adcli' do
       it { is_expected.to contain_package('adcli').with_ensure('present') }
       it { is_expected.to contain_exec('adcli_join') }
     end
-
   end
-
 end
