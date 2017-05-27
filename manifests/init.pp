@@ -24,6 +24,11 @@
 #   Required: true
 #   Default: undef
 #
+# [*ensure*]
+#   Set to "absent" to disable and remove packages.
+#   Required: false
+#   Default: 'present'
+#
 # === Examples
 #
 # class {'::adcli':
@@ -46,18 +51,29 @@ class adcli (
   $ad_join_username        = $adcli::params::ad_join_username,
   $ad_join_password        = $adcli::params::ad_join_password,
   $ad_join_ou              = $adcli::params::ad_join_ou,
+  Enum['present', 'absent'] $ensure = $adcli::params::ensure,
 ) inherits adcli::params {
 
-  validate_string(
-    $ad_domain,
-    $ad_join_username,
-    $ad_join_password,
-    $ad_join_ou
-  )
+  case $ensure {
+    'present': {
+      validate_string(
+        $ad_domain,
+        $ad_join_username,
+        $ad_join_password,
+        $ad_join_ou
+      )
 
-  anchor { 'adcli::begin': } ->
-  class { '::adcli::install': } ->
-  class { '::adcli::join': } ->
-  anchor { 'adcli::end': }
-
+      anchor { 'adcli::begin': } ->
+      class { '::adcli::install':
+        ensure => $ensure,
+      } ->
+      class { '::adcli::join': } ->
+      anchor { 'adcli::end': }
+    }
+    default: {
+      class { '::adcli::install':
+        ensure => $ensure,
+      }
+    }
+  }
 }

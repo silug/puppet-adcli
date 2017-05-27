@@ -25,6 +25,16 @@ describe 'adcli' do
       it { is_expected.to contain_package('adcli').with_ensure('present') }
       it { is_expected.to contain_exec('adcli_join') }
     end
+
+    context 'with ensure set to absent' do
+      before do
+        params.merge!(
+          :ensure => 'absent'
+        )
+      end
+      it { is_expected.to contain_class('adcli::install') }
+      it { is_expected.to contain_package('adcli').with_ensure('absent') }
+    end
   end
 
   describe 'on RedHat 7.2' do

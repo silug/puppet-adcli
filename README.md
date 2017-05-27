@@ -55,6 +55,11 @@ Defines the Active Directory organizational unit to use during domain join opera
 Type: string
 Default: undef
 
+#####`ensure`
+Set to `absent` to disable and remove packages.
+Type: string
+Default: present
+
 ## Limitations
 
 Tested on:
